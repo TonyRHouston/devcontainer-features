@@ -134,6 +134,15 @@ main() {
 
     # Install Claude Code CLI
     install_claude_code || exit 1
+
+    # Install MCP server setup script
+    echo "Installing MCP server setup script..."
+    SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+    if [ -f "$SCRIPT_DIR/setup-mcp-servers.sh" ]; then
+        cp "$SCRIPT_DIR/setup-mcp-servers.sh" /usr/local/bin/claude-setup-mcp-servers
+        chmod +x /usr/local/bin/claude-setup-mcp-servers
+        echo "MCP server setup script installed to /usr/local/bin/claude-setup-mcp-servers"
+    fi
 }
 
 # Execute main function
